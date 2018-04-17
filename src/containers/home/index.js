@@ -23,7 +23,12 @@ class Home extends Component {
 
   render() {
     return (
-      <LayoutPage header={<HeaderContainer/>}>
+      <div>123124</div>
+    );
+  }
+}
+
+{/* <LayoutPage header={<HeaderContainer/>}>
         <LayoutContent>
           <h1>Главная страница</h1>
           <Link to="/main">Внутренний раздел</Link>
@@ -31,13 +36,12 @@ class Home extends Component {
             <Button onClick={this.showInfo}>Показать модалку</Button>
           </div>
         </LayoutContent>
-      </LayoutPage>
-    );
-  }
-}
+      </LayoutPage> */}
 
-export default withRouter(
-  connect(state => ({
+// export default withRouter(
+//   connect(state => ({
 
-  }))(Home)
-);
+//   }))(Home)
+// );
+
+export default Home;

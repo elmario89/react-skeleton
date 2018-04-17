@@ -33,6 +33,19 @@
         "syntax-class-properties",
         "transform-object-rest-spread"
       ]
+    },
+    "server": {
+      "plugins": [
+        [
+          "css-modules-transform", {
+              "generateScopedName": "[hash:8]",
+              "extensions": [".less"]
+          }
+        ],
+        "transform-class-properties",
+        "syntax-class-properties",
+        "transform-object-rest-spread"
+      ]
     }
   }
 }

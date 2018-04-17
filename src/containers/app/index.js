@@ -4,9 +4,11 @@ import {accountActions} from '../../store/actions';
 import {Route, Router, Switch} from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import PropTypes from 'prop-types';
+import { renderRoutes } from "react-router-config"
 
 import "./style.less";
 
+import { routes } from "../../routes";
 import Home from '../home';
 import Main from '../main';
 import Login from '../login';
@@ -46,12 +48,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router history={this.history}>
-          <Switch>
-            <Route path="/" exact={true} component={Home}/>
-            <Route path="/login" component={Login}/>
-            <Route path="/main" component={Main}/>
-            <Route component={NotFound}/>
-          </Switch>
+          { renderRoutes(routes) }
         </Router>
         <Modals history={this.history}/>
       </div>
