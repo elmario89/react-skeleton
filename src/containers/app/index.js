@@ -1,19 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {accountActions} from '../../store/actions';
-import {Route, Router, Switch} from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
+import {Route, Switch} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { renderRoutes } from "react-router-config"
 
 import "./style.less";
 
-import { routes } from "../../routes";
-import Home from '../home';
-import Main from '../main';
-import Login from '../login';
+import routes from '../../routes';
 import NotFound from '../not-found';
-import Modals from '../modals';
 
 class App extends Component {
 
@@ -21,11 +15,6 @@ class App extends Component {
     account: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
   };
-
-  constructor(props) {
-    super(props);
-    this.history = createBrowserHistory();
-  }
 
   componentWillMount() {
     if (this.props.account.hasToken === null) {
@@ -37,20 +26,19 @@ class App extends Component {
 
   render() {
     // If checking token
-    if (this.props.account.hasToken === null) {
-      return (
-        <div className="App">
-          Загрузка...
-        </div>
-      );
-    }
+    // if (this.props.account.hasToken === null) {
+    //   return (
+    //     <div className="App">
+    //       Загрузка...
+    //     </div>
+    //   );
+    // }
 
     return (
       <div className="App">
-        <Router history={this.history}>
-          { renderRoutes(routes) }
-        </Router>
-        <Modals history={this.history}/>
+          <Switch>
+            { routes.map( route => <Route key={ route.path } { ...route } /> ) }
+          </Switch>
       </div>
     );
   }

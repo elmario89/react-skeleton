@@ -71,8 +71,6 @@ class HeaderContainer extends Component {
   }
 }
 
-// export default withRouter(connect(state => ({
+export default withRouter(connect(state => ({
 
-// }))(HeaderContainer));
-
-export default HeaderContainer;
+}))(HeaderContainer));

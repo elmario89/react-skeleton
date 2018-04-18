@@ -1,20 +1,21 @@
 import Home from '../containers/home';
 import Login from '../containers/login';
 import Main from '../containers/main';
-import { open } from '../store/modal/actions';
 
-export const routes = [
+export default [
   {
-    path: "/",
-    component: Home,
-    loadData: () => {}
-  }, { 
-    path: "/login",
-    component: Login,
-    loadData: () => {}
-  }, { 
-    path: "/main",
-    component: Main,
-    loadData: () => {}
-  } 
+      path: "/",
+      component: Home,
+      exact: true,
+  },
+  {
+      path: "/login",
+      component: Login,
+      exact: true,
+  },
+  {
+      path: "/main",
+      component: Main,
+      exact: true,
+  }
 ];

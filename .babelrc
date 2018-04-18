@@ -3,6 +3,7 @@
     "env",
     "react"
   ],
+  
   "env": {
     "development": {
       "plugins": [
@@ -35,17 +36,19 @@
       ]
     },
     "server": {
-      "plugins": [
-        [
-          "css-modules-transform", {
-              "generateScopedName": "[hash:8]",
-              "extensions": [".less"]
-          }
-        ],
-        "transform-class-properties",
-        "syntax-class-properties",
+      "plugins": [ 
+        [ 
+          "css-modules-transform", { 
+              "generateScopedName": "[hash:8]", 
+              "extensions": [".less"] 
+          } 
+        ], 
+        "transform-es2015-modules-commonjs",
+        "transform-class-properties", 
+        "syntax-class-properties", 
         "transform-object-rest-spread"
-      ]
-    }
+        
+      ] 
+    } 
   }
 }
