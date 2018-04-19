@@ -52,7 +52,6 @@ function htmlTemplate( reactDom, reduxState, helmetData ) {
             <meta charset="utf-8">
             ${ helmetData.title.toString( ) }
             ${ helmetData.meta.toString( ) }
-            <title>React SSR</title>
         </head>
         <link type="stylesheet" href="bundle.css">
         <body>

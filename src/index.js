@@ -1,15 +1,16 @@
 import React from 'react';
-import { hydrate } from 'react-dom';
-import {Provider} from 'react-redux';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+
 import store from './store/store.js';
-import Client from './client';
+import App from './containers/app';
 import http from "./utils/http.js";
 
 http.init(store);
 
-hydrate(
+render(
   <Provider store={store}>
-      <Client/>
+      <App/>
   </Provider>,
   document.getElementById('app')
 );
