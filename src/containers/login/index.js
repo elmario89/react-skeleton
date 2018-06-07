@@ -16,7 +16,9 @@ export class Login extends Component {
     super(props);
 
     this.state = {
-      isRestore: false
+      isRestore: false,
+      email: null,
+      password: null
     }
   }
 
@@ -34,13 +36,17 @@ export class Login extends Component {
     console.log('restored');
   };
 
+  changeLoginField = (e, name) => {
+    this.setState({[name]: e.target.value});
+  };
+
   render() {
     return (
       <div>
         { !this.state.isRestore &&
           <from className="login">
-            <input type="email" placeholder="email"/>
-            <input type="password" placeholder="password"/>
+            <input type="email" placeholder="email" onChange={(e) => this.changeLoginField(e, 'email')} />
+            <input type="password" placeholder="password" onChange={(e) => this.changeLoginField(e, 'password')} />
             <button className="restore" onClick={this.changeView}>go to restore</button>
           </from>
         }

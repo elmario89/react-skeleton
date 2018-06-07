@@ -31,4 +31,13 @@ describe('Login Component', () => {
 
     expect(wrapper.find('.login').exists()).toBe(true);
   });
+  it('should react to change fields events', function () {
+    const wrapper = shallow(<Login history={{}} account={{}} isLoading={false}/>);
+
+    wrapper.find('[type="email"]').simulate('change', {target: {value: 'owner@example.com'}});
+    expect(wrapper.state('email')).toEqual('owner@example.com');
+
+    wrapper.find('[type="password"]').simulate('change', {target: {value: '221221'}});
+    expect(wrapper.state('password')).toEqual('221221');
+  });
 });
