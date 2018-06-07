@@ -2,11 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {LayoutPage} from "../../components/layouts";
-import LayoutContent from "../../components/layouts/layout-content";
-import HeaderContainer from "../header-container";
 
-class Login extends Component {
+export class Login extends Component {
 
   static propTypes = {
     //login: PropTypes.func.isRequired,
@@ -17,6 +14,10 @@ class Login extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      isRestore: false
+    }
   }
 
   componentWillMount() {
@@ -25,16 +26,32 @@ class Login extends Component {
     }
   }
 
+  changeView = () => {
+    this.setState({isRestore: !this.state.isRestore});
+  };
+
+  restorePassword = () => {
+    console.log('restored');
+  };
+
   render() {
     return (
-      <LayoutPage header={<HeaderContainer/>}>
-        <LayoutContent>
-          <div>
-            <h1>Login page</h1>
-            <Link to="/">На главную</Link>
-          </div>
-        </LayoutContent>
-      </LayoutPage>
+      <div>
+        { !this.state.isRestore &&
+          <from className="login">
+            <input type="email" placeholder="email"/>
+            <input type="password" placeholder="password"/>
+            <button className="restore" onClick={this.changeView}>go to restore</button>
+          </from>
+        }
+        { this.state.isRestore &&
+          <from className="restoreForm">
+            <input type="email" placeholder="email"/>
+            <button className="restore" onClick={this.restorePassword}>restore</button>
+            <button className="login" onClick={this.changeView}>cancel</button>
+          </from>
+        }
+      </div>
     );
   }
 }
